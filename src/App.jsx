@@ -191,12 +191,14 @@ const PHOTO_PACKAGES = [
   {tier:"Starter",name:"Rising Star",price:50,per:"session",desc:"Perfect for youth players building their first portfolio.",features:["1-hour shoot","2 edited locations","25 edited photos","Online gallery","Social media exports"],featured:false},
   {tier:"Popular",name:"Pro Player",price:299,per:"session",desc:"The complete package for serious players on the rise.",features:["3-hour shoot","4+ locations","60 edited photos","Action & portrait sets","48hr rush delivery","Print-ready files"],featured:true},
   {tier:"Elite",name:"Next Level",price:549,per:"session",desc:"Full-day elite treatment for the player who wants it all.",features:["Full day shoot","Unlimited locations","100+ edited photos","Video BTS content","Same-day previews","Personal branding kit"],featured:false},
+  {tier:"Popular",name:"Pro Player",price:100,per:"session",desc:"The complete package for serious players on the rise.",features:["3-hour shoot","4+ locations","60 edited photos","Action & portrait sets","48hr rush delivery","Print-ready files"],featured:true},
+  {tier:"Elite",name:"Next Level",price:175,per:"session",desc:"Full-day elite treatment for the player who wants it all.",features:["Full day shoot","Unlimited locations","100+ edited photos","Video BTS content","Same-day previews","Personal branding kit"],featured:false},
 ];
 
 const REEL_PACKAGES = [
-  {tier:"Starter",name:"First Touch",price:149,per:"reel",desc:"Upload your game footage — we run it through AI and deliver a clean, shareable highlight reel.",features:["1 full game or multiple clips","AI-powered highlight detection","Licensed background music","NLS branded intro & outro","Social-ready exports (9:16 & 16:9)"],featured:false},
-  {tier:"Popular",name:"Game Changer",price:299,per:"reel",desc:"Multiple games processed, AI finds your best moments, we polish it into a cinematic reel.",features:["Up to 3 full games","AI multi-game highlight cutting","Custom music selection","Motion graphics & transitions","Scouting-optimized version","4K delivery"],featured:true},
-  {tier:"Elite",name:"Signing Day",price:549,per:"reel",desc:"The full package — entire season footage, AI-curated, professionally finished.",features:["Unlimited footage upload","Full season highlight cut","Premium cinematic edit","Unlimited revisions","Coach outreach version","Lifetime cloud storage"],featured:false},
+  {tier:"Starter",name:"First Touch",price:30,per:"reel",desc:"Upload your game footage — we run it through AI and deliver a clean, shareable highlight reel.",features:["1 full game or multiple clips","AI-powered highlight detection","Licensed background music","NLS branded intro & outro","Social-ready exports (9:16 & 16:9)"],featured:false},
+  {tier:"Popular",name:"Game Changer",price:75,per:"reel",desc:"Multiple games processed, AI finds your best moments, we polish it into a cinematic reel.",features:["Up to 3 full games","AI multi-game highlight cutting","Custom music selection","Motion graphics & transitions","Scouting-optimized version","4K delivery"],featured:true},
+  {tier:"Elite",name:"Signing Day",price:125,per:"reel",desc:"The full package — entire season footage, AI-curated, professionally finished.",features:["Unlimited footage upload","Full season highlight cut","Premium cinematic edit","Unlimited revisions","Coach outreach version","Lifetime cloud storage"],featured:false},
 ];
 
 const REEL_WORKFLOW = [
