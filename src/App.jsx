@@ -191,6 +191,11 @@ const PHOTO_PACKAGES = [
   {tier:"Starter",name:"Single Player",price:50,per:"session",desc:"We show up to your game and shoot exclusively for you. Every key moment, every touch — captured and edited. Perfect for players building their personal brand or recruiting profile.",features:["1-hour shoot","2 edited locations","25 edited photos","Online gallery","Social media exports"],featured:false},
   {tier:"Popular",name:"Small Group",price:100,per:"session",desc:"The complete package for serious players on the rise.",features:["3-hour shoot","4+ locations","60 edited photos","Action & portrait sets","48hr rush delivery","Print-ready files"],featured:true},
   {tier:"Elite",name:"Full Team",price:175,per:"session",desc:"Full Team elite treatment for the player who wants it all.",features:["Full day shoot","Unlimited locations","100+ edited photos","Video BTS content","Same-day previews","Personal branding kit"],featured:false},
+  {tier:"Starter",name:"Rising Star",price:50,per:"session",desc:"Perfect for youth players building their first portfolio.",features:["1-hour shoot","2 edited locations","25 edited photos","Online gallery","Social media exports"],featured:false},
+  {tier:"Popular",name:"Pro Player",price:299,per:"session",desc:"The complete package for serious players on the rise.",features:["3-hour shoot","4+ locations","60 edited photos","Action & portrait sets","48hr rush delivery","Print-ready files"],featured:true},
+  {tier:"Elite",name:"Next Level",price:549,per:"session",desc:"Full-day elite treatment for the player who wants it all.",features:["Full day shoot","Unlimited locations","100+ edited photos","Video BTS content","Same-day previews","Personal branding kit"],featured:false},
+  {tier:"Popular",name:"Pro Player",price:100,per:"session",desc:"The complete package for serious players on the rise.",features:["3-hour shoot","4+ locations","60 edited photos","Action & portrait sets","48hr rush delivery","Print-ready files"],featured:true},
+  {tier:"Elite",name:"Next Level",price:175,per:"session",desc:"Full-day elite treatment for the player who wants it all.",features:["Full day shoot","Unlimited locations","100+ edited photos","Video BTS content","Same-day previews","Personal branding kit"],featured:false},
 ];
 
 const REEL_PACKAGES = [
@@ -476,7 +481,7 @@ export default function App() {
           <img src={LOGO_B64} alt="NLS"/>
           <span className="footer-logo-text display"><span className="gold-text">NEXT LEVEL</span> STUDIOS</span>
         </div>
-        <div className="footer-sub">Elevating Soccer Players. One Shot at a Time.</div>
+        <div className="footer-sub">Elevating Soccer Players. Test Shots at a Time.</div>
         <div className="footer-links">
           {["Home","Services","Pricing","Book Now"].map(l=>(
             <button key={l} className="footer-link" onClick={() => setTab(l.toLowerCase().replace(" ","").replace("now",""))}>{l}</button>
