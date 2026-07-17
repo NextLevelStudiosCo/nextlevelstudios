@@ -481,7 +481,7 @@ export default function App() {
           <img src={LOGO_B64} alt="NLS"/>
           <span className="footer-logo-text display"><span className="gold-text">NEXT LEVEL</span> STUDIOS</span>
         </div>
-        <div className="footer-sub">Elevating Soccer Players. Test Shots at a Time.</div>
+        <div className="footer-sub">Elevating Soccer Players. One Shot at a Time.</div>
         <div className="footer-links">
           {["Home","Services","Pricing","Book Now"].map(l=>(
             <button key={l} className="footer-link" onClick={() => setTab(l.toLowerCase().replace(" ","").replace("now",""))}>{l}</button>
