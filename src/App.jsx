@@ -511,16 +511,12 @@ export default function App() {
                   <label className="form-label">Service</label>
                   <select className="form-select" value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
                     <option value="">Select a service...</option>
-                    <optgroup label="📸 Photography">
-                      <option value="Photography - Starter">Photography — Starter</option>
-                      <option value="Photography - Pro">Photography — Pro</option>
-                      <option value="Photography - Elite">Photography — Elite</option>
-                    </optgroup>
-                    <optgroup label="🎬 Highlight Reels">
-                      <option value="Highlight Reel - Starter">Highlight Reel — Starter</option>
-                      <option value="Highlight Reel - Pro">Highlight Reel — Pro</option>
-                      <option value="Highlight Reel - Elite">Highlight Reel — Elite</option>
-                    </optgroup>
+                    <option value="Photography - Starter">📸 Photography — Starter</option>
+                    <option value="Photography - Pro">📸 Photography — Pro</option>
+                    <option value="Photography - Elite">📸 Photography — Elite</option>
+                    <option value="Highlight Reel - Starter">🎬 Highlight Reel — Starter</option>
+                    <option value="Highlight Reel - Pro">🎬 Highlight Reel — Pro</option>
+                    <option value="Highlight Reel - Elite">🎬 Highlight Reel — Elite</option>
                     <option value="Photography + Highlight Pro Bundle">📸🎬 Photography + Highlight Pro Bundle</option>
                   </select>
                 </div>
