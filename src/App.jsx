@@ -230,7 +230,27 @@ export default function App() {
   const isReelBooking = form.service.toLowerCase().includes("reel") || form.service.toLowerCase().includes("highlight");
   const packages = pricingTab === "photo" ? PHOTO_PACKAGES : REEL_PACKAGES;
 
-  const handleBook = () => { if (form.name && form.email) setBooked(true); };
+  const handleBook = async () => {
+    if (!form.name || !form.email) return;
+    try {
+      await fetch("https://formspree.io/f/mnjedvqk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          age: form.age,
+          service: form.service,
+          date: form.date,
+          footageLink: form.footageLink,
+          message: form.message
+        })
+      });
+    } catch (err) {
+      console.error("Booking submission failed", err);
+    }
+    setBooked(true);
+  };
   const goBook = (type) => { setServiceType(type); setTab("book"); };
 
   return  (
