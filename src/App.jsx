@@ -317,7 +317,7 @@ export default function App() {
             <h2 className="section-title">Simple Process. <span className="gold-text">Elite Results.</span></h2>
           </div>
           <div className="process-steps">
-            {[{n:"01",icon:"📋",title:"Book Online",desc:"Choose your package. Instant confirmation sent to your inbox."},{n:"02",icon:"📤",title:"Send Footage",desc:"For reels, drop your game footage link. For photos, we come to you."},{n:"03",icon:"🤖",title:"AI Does Heavy Lifting",desc:"Our AI tools scan your footage and cut the best moments automatically."},{n:"04",icon:"✨",title:"We Polish",desc:"We add music, branding, and finishing touches to make it elite."},{n:"05",icon:"🚀",title:"You Shine",desc:"Receive your photos or reel ready to post, share with scouts, and flex."}].map(s=>(
+            {[{n:"01",icon:"📋",title:"Book Online",desc:"Choose your package. Instant confirmation sent to your inbox."},{n:"02",icon:"📤",title:"Send Footage",desc:"For reels, drop your game footage link. For photos, we come to you."},{n:"03",icon:"🤖",title:"AI Does Heavy Lifting",desc:"Our AI tools scan your footage and cut the best moments automatically."},{n:"04",icon:"✨",title:"We Polish",desc:"We add music, branding, and finishing touches to make it elite."},{n:"05",icon:"🚀",title:"You Shine",desc:"Receive your photos or reel ready to post, share with scouts, and publish."}].map(s=>(
               <div className="step" key={s.n}>
                 <div className="step-num display">{s.n}</div>
                 <div className="step-icon">{s.icon}</div>
@@ -483,7 +483,7 @@ export default function App() {
           <div className="section" style={{textAlign:"center",paddingBottom:0}}>
             <span className="section-tag">Booking</span>
             <h2 className="section-title">Let's Get You <span className="gold-text">Booked</span></h2>
-            <p className="section-sub" style={{margin:"0 auto"}}>Fill out the details below. We'll synchronize your details and confirm within 24 hours.</p>
+            <p className="section-sub" style={{margin:"0 auto"}}>Fill out the details below. We'll account for your details and confirm within 24 hours.</p>
           </div>
           <div style={{maxWidth:1160,margin:"0 auto",padding:"0 40px 100px"}}>
             {booked ? (
@@ -491,7 +491,7 @@ export default function App() {
                 <img src={LOGO_B64} alt="NLS" style={{width:100,height:100,objectFit:"contain",marginBottom:24,filter:"drop-shadow(0 8px 24px rgba(201,168,76,.4))"}}/>
                 <h2 className="section-title" style={{marginBottom:14}}>You're <span className="gold-text">Booked!</span></h2>
                 <p style={{color:GRAY,fontWeight:300,marginBottom:12}}>Thanks, {form.name}! We will reach out to <span style={{color:GOLD}}>{form.email}</span> within 24 hours.</p>
-                {isReelBooking && <p style={{color:GRAY,fontWeight:300,marginBottom:32,fontSize:".88rem"}}>For your reel — check your email shortly for your personalized upload sequence instructions.</p>}
+                {isReelBooking && <p style={{color:GRAY,fontWeight:300,marginBottom:32,fontSize:".88rem"}}>For your reel — check your email shortly for with your upload instructions.</p>}
                 <button className="btn-primary" onClick={() => { setBooked(false); setTab("home"); }}>Back to Home</button>
               </div>
             ) : (
@@ -538,11 +538,11 @@ export default function App() {
 
                     <div className="form-group" style={{marginBottom: 0}}>
                       <label className="form-label">Preferred Music Song or Artist (if applicable)</label>
-                      <input className="form-input" placeholder="e.g. Drake, instrumental hip-hop, upbeat synth" value={form.preferredMusic} onChange={e=>setForm({...form,preferredMusic:e.target.value})}/>
+                      <input className="form-input" placeholder="e.g. Drake, instrumentals, phonk" value={form.preferredMusic} onChange={e=>setForm({...form,preferredMusic:e.target.value})}/>
                     </div>
 
                     <div style={{fontSize:".8rem", color:GRAY, marginTop: 12, fontStyle: "italic"}}>
-                      💡 Note: To upload your player photo file (Action shot preferred), we will email you a secure direct upload folder access point upon submission.
+                      💡 Note: To upload your player photo file (Action shot preferred), we will email you a upload folder access point upon submission.
                     </div>
                   </div>
                 )}
@@ -560,7 +560,7 @@ export default function App() {
 
                 <div className="form-group" style={{marginTop: 20}}>
                   <label className="form-label">Anything else?</label>
-                  <textarea className="form-textarea" placeholder="Tell us about the player, specific match locations, tracking requirements, or visual aesthetics..." value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
+                  <textarea className="form-textarea" placeholder="Tell us about the player, specific match locations, level of play, position..." value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
                 </div>
                 <button className="btn-primary" style={{marginTop:8,width:"100%"}} onClick={handleBook}>Submit Booking Request →</button>
               </div>
