@@ -509,15 +509,20 @@ export default function App() {
 
                 <div className="form-group">
                   <label className="form-label">Service</label>
-                  <select className="form-select" value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
-                    <option value="">Select a service...</option>
-                    <option value="Photography - Starter">📸 Photography — Starter</option>
-                    <option value="Photography - Pro">📸 Photography — Pro</option>
-                    <option value="Photography - Elite">📸 Photography — Elite</option>
-                    <option value="Highlight Reel - Starter">🎬 Highlight Reel — Starter</option>
-                    <option value="Highlight Reel - Pro">🎬 Highlight Reel — Pro</option>
-                    <option value="Highlight Reel - Elite">🎬 Highlight Reel — Elite</option>
-                    <option value="Photography + Highlight Pro Bundle">📸🎬 Photography + Highlight Pro Bundle</option>
+                  <select 
+                    className="form-select" 
+                    value={form.service} 
+                    onChange={e=>setForm({...form,service:e.target.value})}
+                    style={{ color: "#ffffff", backgroundColor: "#111827" }} /* Forces dark theme container */
+                  >
+                    <option value="" style={{ color: "#000000" }}>Select a service...</option>
+                    <option value="Photography - Starter" style={{ color: "#000000" }}>📸 Photography — Starter</option>
+                    <option value="Photography - Pro" style={{ color: "#000000" }}>📸 Photography — Pro</option>
+                    <option value="Photography - Elite" style={{ color: "#000000" }}>📸 Photography — Elite</option>
+                    <option value="Highlight Reel - Starter" style={{ color: "#000000" }}>🎬 Highlight Reel — Starter</option>
+                    <option value="Highlight Reel - Pro" style={{ color: "#000000" }}>🎬 Highlight Reel — Pro</option>
+                    <option value="Highlight Reel - Elite" style={{ color: "#000000" }}>🎬 Highlight Reel — Elite</option>
+                    <option value="Photography + Highlight Pro Bundle" style={{ color: "#000000" }}>📸🎬 Photography + Highlight Pro Bundle</option>
                   </select>
                 </div>
 
