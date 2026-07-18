@@ -196,7 +196,7 @@ const PHOTO_PACKAGES = [
 
 const REEL_PACKAGES = [
   {tier:"Starter",name:"First Touch",price:30,per:"reel",desc:"Upload one full game — we run it through AI and deliver a clean, shareable highlight reel.",featured:false},
-  {tier:"Popular",name:"Game Changer",price:75,per:"reel",desc:"Multiple games processed, AI finds your best moments, we polish it into a cinematic reel.",featured:true},
+  {tier:"Popular",name:"Game Changer",price:75,per:"reel",desc:"Multiple games processed, AI finds your best moments, we polish it into a signature reel.",featured:true},
   {tier:"Elite",name:"Signing Day",price:125,per:"reel",desc:"The full package — entire season footage, AI-curated, professionally finished.",featured:false},
 ];
 
@@ -206,8 +206,8 @@ const REEL_FEATURES = [
   {label:"Licensed music",     starter:"✅",          pro:"✅",           elite:"✅"},
   {label:"NLS intro & outro",  starter:"✅",          pro:"✅",           elite:"✅"},
   {label:"Motion graphics",    starter:"❌",          pro:"✅",           elite:"✅"},
-  {label:"Scouting version",   starter:"❌",          pro:"✅",           elite:"✅"},
-  {label:"4K delivery",        starter:"❌",          pro:"✅",           elite:"✅"},
+  {label:"Scouting Page",   starter:"❌",          pro:"✅",           elite:"✅"},
+  {label:"Ai Coach Feedback",  starter:"❌",          pro:"❌",           elite:"✅"},
   {label:"Unlimited revisions",starter:"❌",          pro:"❌",           elite:"✅"},
   {label:"Priority delivery",  starter:"❌",          pro:"❌",           elite:"✅"},
 ];
@@ -217,7 +217,7 @@ const REEL_WORKFLOW = [
   {n:2,title:"Upload Footage",desc:"Share your game footage via Google Drive or WeTransfer link. Full games welcome."},
   {n:3,title:"AI Processing",desc:"We run your footage through AI tools that automatically detect and cut your best moments."},
   {n:4,title:"We Polish",desc:"Our team adds music, NLS branding, transitions, and the finishing touches."},
-  {n:5,title:"You Receive",desc:"Your cinematic highlight reel delivered within 48–72 hours, ready to post."},
+  {n:5,title:"You Receive",desc:"Your highlight reel delivered within 48–72 hours, ready to post."},
 ];
 
 export default function App() {
@@ -225,7 +225,7 @@ export default function App() {
   const [pricingTab, setPricingTab] = useState("photo");
   const [serviceType, setServiceType] = useState("");
   const [booked, setBooked] = useState(false);
-  const [form, setForm] = useState({name:"",email:"",phone:"",birthday:"",age:"",service:"",date:"",footageLink:"",musicPreference:"",referencePhoto:"",message:""});
+  const [form, setForm] = useState({name:"",email:"",age:"",service:"",date:"",footageLink:"",message:""});
 
   const isReelBooking = form.service.toLowerCase().includes("reel") || form.service.toLowerCase().includes("highlight");
   const packages = pricingTab === "photo" ? PHOTO_PACKAGES : REEL_PACKAGES;
@@ -239,14 +239,10 @@ export default function App() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
-          phone: form.phone,
-          birthday: form.birthday,
           age: form.age,
           service: form.service,
           date: form.date,
           footageLink: form.footageLink,
-          musicPreference: form.musicPreference,
-          referencePhoto: form.referencePhoto,
           message: form.message
         })
       });
@@ -279,7 +275,7 @@ export default function App() {
           <img src={LOGO_B64} alt="NLS" className="hero-logo fade-up" />
           <div className="hero-tag fade-up-2"><span className="hero-dot" /> Now Booking — Limited Slots</div>
           <h1 className="hero-title fade-up-3">NEXT LEVEL<br /><span className="gold-text">STUDIOS</span></h1>
-          <p className="hero-sub fade-up-4">Elite photography & AI-powered cinematic highlight reels for soccer players who are serious about standing out.</p>
+          <p className="hero-sub fade-up-4">Elite photography & AI-powered highlight reels for soccer players who are serious about standing out.</p>
           <div className="hero-btns fade-up-4">
             <button className="btn-primary" onClick={() => setTab("book")}>Book a Session</button>
             <button className="btn-ghost" onClick={() => setTab("services")}>Our Services</button>
@@ -368,8 +364,8 @@ export default function App() {
                 </div>
                 <div className="service-card-body">
                   <span className="service-badge">AI Highlight Reels</span>
-                  <div className="service-title display">Cinematic Highlight Reels</div>
-                  <p className="service-desc">Upload your raw game footage — full games, multiple matches, whatever you have. Our AI tools find your best moments and we turn it into a polished, cinematic reel.</p>
+                  <div className="service-title display">Elite Highlight Reels</div>
+                  <p className="service-desc">Upload your raw game footage — full games, multiple matches, whatever you have. Our AI tools find your best moments and we turn it into a polished, signature reel.</p>
                   <div className="ai-badge">🤖 AI Powered</div>
                   <ul className="service-features">
                     {["Upload full games or multiple clips","AI detects your best moments automatically","Licensed music + NLS branding","Scouting & social versions included","Delivered in 48–72 hours"].map(f=><li key={f}><span className="check">✦</span>{f}</li>)}
@@ -491,10 +487,6 @@ export default function App() {
                   <div className="form-group"><label className="form-label">Email</label><input className="form-input" type="email" placeholder="your@email.com" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}/></div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group"><label className="form-label">Phone Number</label><input className="form-input" placeholder="(555) 555-5555" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})}/></div>
-                  <div className="form-group"><label className="form-label">Birthday</label><input className="form-input" type="date" value={form.birthday} onChange={e=>setForm({...form,birthday:e.target.value})} style={{colorScheme:"dark"}}/></div>
-                </div>
-                <div className="form-row">
                   <div className="form-group"><label className="form-label">Player Age</label><input className="form-input" placeholder="e.g. 15" value={form.age} onChange={e=>setForm({...form,age:e.target.value})}/></div>
                   <div className="form-group"><label className="form-label">Preferred Date</label><input className="form-input" type="date" value={form.date} onChange={e=>setForm({...form,date:e.target.value})} style={{colorScheme:"dark"}}/></div>
                 </div>
@@ -523,17 +515,9 @@ export default function App() {
                     <div className="footage-box-desc">
                       After booking you can share your footage via Google Drive or WeTransfer. If you already have a link ready, drop it below. Full games, multiple clips — upload everything and we'll handle the rest.
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{marginBottom:0}}>
                       <label className="form-label">Footage Link (optional now)</label>
                       <input className="form-input" placeholder="Google Drive or WeTransfer link" value={form.footageLink} onChange={e=>setForm({...form,footageLink:e.target.value})}/>
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">Reference Photo (action shot preferred)</label>
-                      <input className="form-input" placeholder="Google Drive or Photos link to a photo of the player" value={form.referencePhoto} onChange={e=>setForm({...form,referencePhoto:e.target.value})}/>
-                    </div>
-                    <div className="form-group" style={{marginBottom:0}}>
-                      <label className="form-label">Preferred Music / Artist (if applicable)</label>
-                      <input className="form-input" placeholder="e.g. Drake, upbeat hip hop, no preference" value={form.musicPreference} onChange={e=>setForm({...form,musicPreference:e.target.value})}/>
                     </div>
                   </div>
                 )}
