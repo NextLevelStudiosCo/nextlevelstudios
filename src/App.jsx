@@ -387,6 +387,23 @@ export default function App() {
                 <button key={k} className={"tab-switch-btn"+(pricingTab===k?" active":"")} onClick={() => setPricingTab(k)}>{l}</button>
               ))}
             </div>
+            {pricingTab==="photo" && (
+              <div className="pricing-grid">
+                {PHOTO_PACKAGES.map(pkg=>(
+                  <div key={pkg.name} className={"price-card"+(pkg.featured?" featured":"")}>
+                    <div className="price-tier">{pkg.tier}</div>
+                    <div className="price-name display">{pkg.name}</div>
+                    <div className="price-amount"><span className="price-dollar">$</span><span className="price-num">{pkg.price}</span><span className="price-per">/ {pkg.per}</span></div>
+                    <p className="price-desc">{pkg.desc}</p>
+                    <ul className="price-list">{pkg.features.map(f=><li key={f}><span style={{color:GOLD}}>✦</span>{f}</li>)}</ul>
+                    {pkg.featured
+                      ? <button className="btn-price-primary" onClick={() => setTab("book")}>Book This Package</button>
+                      : <button className="btn-price-ghost" onClick={() => setTab("book")}>Get Started</button>}
+                  </div>
+                ))}
+              </div>
+            )}
+
             {pricingTab==="reels" && (
               <div style={{marginTop:32,overflowX:"auto"}}>
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:".88rem"}}>
