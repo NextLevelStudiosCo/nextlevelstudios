@@ -225,32 +225,35 @@ export default function App() {
   const [pricingTab, setPricingTab] = useState("photo");
   const [serviceType, setServiceType] = useState("");
   const [booked, setBooked] = useState(false);
-  const [form, setForm] = useState({name:"",email:"",age:"",service:"",date:"",footageLink:"",message:""});
+  const [form, setForm] = useState({name:"",email:"",phone:"",birthday:"",service:"",preferredDate:"",footageLink:"",preferredMusic:"",message:""});
 
-  const isReelBooking = form.service.toLowerCase().includes("reel") || form.service.toLowerCase().includes("highlight");
+  const isReelBooking = form.service.toLowerCase().includes("reel") || form.service.toLowerCase().includes("bundle");
+  const isPhotoBooking = form.service.toLowerCase().includes("photography") || form.service.toLowerCase().includes("bundle");
   const packages = pricingTab === "photo" ? PHOTO_PACKAGES : REEL_PACKAGES;
 
   const handleBook = async () => {
-    if (!form.name || !form.email) return;
-    try {
-      await fetch("https://formspree.io/f/mnjedvqk", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          age: form.age,
-          service: form.service,
-          date: form.date,
-          footageLink: form.footageLink,
-          message: form.message
-        })
-      });
-    } catch (err) {
-      console.error("Booking submission failed", err);
-    }
+  if (!form.name || !form.email || !form.service) return;
+  try {
+    await fetch("https://formspree.io/f/mnjedvqk", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        birthday: form.birthday,
+        service: form.service,
+        preferredDate: form.preferredDate,
+        footageLink: form.footageLink,
+        preferredMusic: form.preferredMusic,
+        message: form.message
+      })
+    });
     setBooked(true);
-  };
+  } catch (err) {
+    console.error("Booking submission failed", err);
+  }
+};
   const goBook = (type) => { setServiceType(type); setTab("book"); };
 
   return  (
@@ -481,53 +484,53 @@ export default function App() {
                 <button className="btn-primary" onClick={() => { setBooked(false); setTab("home"); }}>Back to Home</button>
               </div>
             ) : (
-              <div className="book-wrap">
-                <div className="form-row">
-                  <div className="form-group"><label className="form-label">Full Name</label><input className="form-input" placeholder="Your name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/></div>
-                  <div className="form-group"><label className="form-label">Email</label><input className="form-input" type="email" placeholder="your@email.com" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}/></div>
-                </div>
-                <div className="form-row">
-                  <div className="form-group"><label className="form-label">Player Age</label><input className="form-input" placeholder="e.g. 15" value={form.age} onChange={e=>setForm({...form,age:e.target.value})}/></div>
-                  <div className="form-group"><label className="form-label">Preferred Date</label><input className="form-input" type="date" value={form.date} onChange={e=>setForm({...form,date:e.target.value})} style={{colorScheme:"dark"}}/></div>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Service</label>
-                  <select className="form-select" value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
-                    <option value="">Select a service...</option>
-                    <optgroup label="📸 Photography">
-                      <option>Photography — Single Player ($50)</option>
-                      <option>Photography — Small Group ($100)</option>
-                      <option>Photography — Full Team ($175)</option>
-                    </optgroup>
-                    <optgroup label="🎬 AI Highlight Reels">
-                      <option>Highlight Reel — First Touch ($30)</option>
-                      <option>Highlight Reel — Game Changer ($75)</option>
-                      <option>Highlight Reel — Signing Day ($125)</option>
-                    </optgroup>
-                    <option>📸🎬 Bundle — Photo + Reel Combo</option>
-                  </select>
-                </div>
+        <div className="book-wrap">
+          <div className="form-row">
+            <div className="form-group"><label className="form-label">Full Name</label><input className="form-input" placeholder="Your name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/></div>
+            <div className="form-group"><label className="form-label">Email</label><input className="form-input" type="email" placeholder="your@email.com" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}/></div>
+          </div>
+          <div className="form-row">
+            <div className="form-group"><label className="form-label">Player Age</label><input className="form-input" placeholder="e.g. 15" value={form.age} onChange={e=>setForm({...form,age:e.target.value})}/></div>
+            <div className="form-group"><label className="form-label">Preferred Date</label><input className="form-input" type="date" value={form.date} onChange={e=>setForm({...form,date:e.target.value})} style={{colorScheme:"dark"}}/></div>
+          </div>
+          <div className="form-group">
+            <label className="form-label">Service</label>
+            <select className="form-select" value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
+              <option value="">Select a service...</option>
+              <optgroup label="📸 Photography">
+                <option>Photography — Single Player ($50)</option>
+                <option>Photography — Small Group ($100)</option>
+                <option>Photography — Full Team ($175)</option>
+              </optgroup>
+              <optgroup label="🎬 AI Highlight Reels">
+                <option>Highlight Reel — First Touch ($30)</option>
+                <option>Highlight Reel — Game Changer ($75)</option>
+                <option>Highlight Reel — Signing Day ($125)</option>
+              </optgroup>
+              <option>📸🎬 Bundle — Photo + Reel Combo</option>
+            </select>
+          </div>
 
-                {/* FOOTAGE SECTION — shows when reel is selected */}
-                {isReelBooking && (
-                  <div className="footage-box">
-                    <div className="footage-box-title">🎥 Footage Submission</div>
-                    <div className="footage-box-desc">
-                      After booking you can share your footage via Google Drive or WeTransfer. If you already have a link ready, drop it below. Full games, multiple clips — upload everything and we'll handle the rest.
-                    </div>
-                    <div className="form-group" style={{marginBottom:0}}>
-                      <label className="form-label">Footage Link (optional now)</label>
-                      <input className="form-input" placeholder="Google Drive or WeTransfer link" value={form.footageLink} onChange={e=>setForm({...form,footageLink:e.target.value})}/>
-                    </div>
-                  </div>
-                )}
-
-                <div className="form-group">
-                  <label className="form-label">Anything else?</label>
-                  <textarea className="form-textarea" placeholder={isReelBooking ? "Tell us about the player, how many games, position, what type of reel you want..." : "Tell us about the player, goals, location preferences..."} value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
-                </div>
-                <button className="btn-primary" style={{marginTop:8,width:"100%"}} onClick={handleBook}>Submit Booking Request →</button>
+          {/* FOOTAGE SECTION — shows when reel is selected */}
+          {isReelBooking && (
+            <div className="footage-box">
+              <div className="footage-box-title">🎥 Footage Submission</div>
+              <div className="footage-box-desc">
+                After booking you can share your footage via Google Drive or WeTransfer. If you already have a link ready, drop it below. Full games, multiple clips — upload everything and we'll handle the rest.
               </div>
+              <div className="form-group" style={{marginBottom:0}}>
+                <label className="form-label">Footage Link (optional now)</label>
+                <input className="form-input" placeholder="Google Drive or WeTransfer link" value={form.footageLink} onChange={e=>setForm({...form,footageLink:e.target.value})}/>
+              </div>
+            </div>
+          )}
+
+          <div className="form-group">
+            <label className="form-label">Anything else?</label>
+            <textarea className="form-textarea" placeholder={isReelBooking ? "Tell us about the player, how many games, position, what type of reel you want..." : "Tell us about the player, goals, location preferences..."} value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
+          </div>
+          <button className="btn-primary" style={{marginTop:8,width:"100%"}} onClick={handleBook}>Submit Booking Request →</button>
+        </div>
             )}
           </div>
         </div>
