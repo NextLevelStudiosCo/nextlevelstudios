@@ -225,7 +225,7 @@ export default function App() {
   const [pricingTab, setPricingTab] = useState("photo");
   const [serviceType, setServiceType] = useState("");
   const [booked, setBooked] = useState(false);
-  const [form, setForm] = useState({name:"",email:"",age:"",service:"",date:"",footageLink:"",message:""});
+  const [form, setForm] = useState({name:"",email:"",phone:"",birthday:"",age:"",service:"",date:"",footageLink:"",musicPreference:"",referencePhoto:"",message:""});
 
   const isReelBooking = form.service.toLowerCase().includes("reel") || form.service.toLowerCase().includes("highlight");
   const packages = pricingTab === "photo" ? PHOTO_PACKAGES : REEL_PACKAGES;
@@ -239,10 +239,14 @@ export default function App() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
+          phone: form.phone,
+          birthday: form.birthday,
           age: form.age,
           service: form.service,
           date: form.date,
           footageLink: form.footageLink,
+          musicPreference: form.musicPreference,
+          referencePhoto: form.referencePhoto,
           message: form.message
         })
       });
@@ -487,6 +491,10 @@ export default function App() {
                   <div className="form-group"><label className="form-label">Email</label><input className="form-input" type="email" placeholder="your@email.com" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}/></div>
                 </div>
                 <div className="form-row">
+                  <div className="form-group"><label className="form-label">Phone Number</label><input className="form-input" placeholder="(555) 555-5555" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})}/></div>
+                  <div className="form-group"><label className="form-label">Birthday</label><input className="form-input" type="date" value={form.birthday} onChange={e=>setForm({...form,birthday:e.target.value})} style={{colorScheme:"dark"}}/></div>
+                </div>
+                <div className="form-row">
                   <div className="form-group"><label className="form-label">Player Age</label><input className="form-input" placeholder="e.g. 15" value={form.age} onChange={e=>setForm({...form,age:e.target.value})}/></div>
                   <div className="form-group"><label className="form-label">Preferred Date</label><input className="form-input" type="date" value={form.date} onChange={e=>setForm({...form,date:e.target.value})} style={{colorScheme:"dark"}}/></div>
                 </div>
@@ -515,9 +523,17 @@ export default function App() {
                     <div className="footage-box-desc">
                       After booking you can share your footage via Google Drive or WeTransfer. If you already have a link ready, drop it below. Full games, multiple clips — upload everything and we'll handle the rest.
                     </div>
-                    <div className="form-group" style={{marginBottom:0}}>
+                    <div className="form-group">
                       <label className="form-label">Footage Link (optional now)</label>
                       <input className="form-input" placeholder="Google Drive or WeTransfer link" value={form.footageLink} onChange={e=>setForm({...form,footageLink:e.target.value})}/>
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">Reference Photo (action shot preferred)</label>
+                      <input className="form-input" placeholder="Google Drive or Photos link to a photo of the player" value={form.referencePhoto} onChange={e=>setForm({...form,referencePhoto:e.target.value})}/>
+                    </div>
+                    <div className="form-group" style={{marginBottom:0}}>
+                      <label className="form-label">Preferred Music / Artist (if applicable)</label>
+                      <input className="form-input" placeholder="e.g. Drake, upbeat hip hop, no preference" value={form.musicPreference} onChange={e=>setForm({...form,musicPreference:e.target.value})}/>
                     </div>
                   </div>
                 )}
