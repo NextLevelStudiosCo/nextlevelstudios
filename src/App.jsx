@@ -195,9 +195,21 @@ const PHOTO_PACKAGES = [
 ];
 
 const REEL_PACKAGES = [
-  {tier:"Starter",name:"First Touch",price:30,per:"reel",desc:"Upload your game footage — we run it through AI and deliver a clean, shareable highlight reel.",features:["1 full game or multiple clips","AI-powered highlight detection","Licensed background music","NLS branded intro & outro","Social-ready exports (9:16 & 16:9)"],featured:false},
-  {tier:"Popular",name:"Game Changer",price:75,per:"reel",desc:"Multiple games processed, AI finds your best moments, we polish it into a cinematic reel.",features:["Up to 3 full games","AI multi-game highlight cutting","Custom music selection","Motion graphics & transitions","Scouting-optimized version","4K delivery"],featured:true},
-  {tier:"Elite",name:"Signing Day",price:125,per:"reel",desc:"The full package — entire season footage, AI-curated, professionally finished.",features:["Unlimited footage upload","Full season highlight cut","Premium cinematic edit","Unlimited revisions","Coach outreach version","Lifetime cloud storage"],featured:false},
+  {tier:"Starter",name:"First Touch",price:30,per:"reel",desc:"Upload one full game — we run it through AI and deliver a clean, shareable highlight reel.",featured:false},
+  {tier:"Popular",name:"Game Changer",price:75,per:"reel",desc:"Multiple games processed, AI finds your best moments, we polish it into a cinematic reel.",featured:true},
+  {tier:"Elite",name:"Signing Day",price:125,per:"reel",desc:"The full package — entire season footage, AI-curated, professionally finished.",featured:false},
+];
+
+const REEL_FEATURES = [
+  {label:"Number of games",    starter:"1 game",     pro:"Up to 3",      elite:"Unlimited"},
+  {label:"AI highlight detection", starter:"✅",      pro:"✅",           elite:"✅"},
+  {label:"Licensed music",     starter:"✅",          pro:"✅",           elite:"✅"},
+  {label:"NLS intro & outro",  starter:"✅",          pro:"✅",           elite:"✅"},
+  {label:"Motion graphics",    starter:"❌",          pro:"✅",           elite:"✅"},
+  {label:"Scouting version",   starter:"❌",          pro:"✅",           elite:"✅"},
+  {label:"4K delivery",        starter:"❌",          pro:"✅",           elite:"✅"},
+  {label:"Unlimited revisions",starter:"❌",          pro:"❌",           elite:"✅"},
+  {label:"Priority delivery",  starter:"❌",          pro:"❌",           elite:"✅"},
 ];
 
 const REEL_WORKFLOW = [
@@ -221,10 +233,9 @@ export default function App() {
   const handleBook = () => { if (form.name && form.email) setBooked(true); };
   const goBook = (type) => { setServiceType(type); setTab("book"); };
 
-  return (
+  return  (
     <>
       <style>{styles}</style>
-
       <nav className="nav">
         <div className="nav-logo" onClick={() => setTab("home")}>
           <img src={LOGO_B64} alt="NLS" />
@@ -361,7 +372,8 @@ export default function App() {
             </div>
           </div>
         </div>
-      )}
+      )
+      }
 
       {/* ── PRICING ── */}
       {tab==="pricing" && (
@@ -376,32 +388,44 @@ export default function App() {
               ))}
             </div>
             {pricingTab==="reels" && (
-              <div style={{marginTop:24,background:"rgba(201,168,76,.07)",border:"1px solid rgba(201,168,76,.2)",borderRadius:10,padding:"14px 20px",display:"flex",alignItems:"center",gap:12,maxWidth:600}}>
-                <span style={{fontSize:"1.4rem"}}>🤖</span>
-                <p style={{color:GRAY,fontSize:".84rem",lineHeight:1.65,fontWeight:300}}>
-                  <span style={{color:WHITE,fontWeight:600}}>How it works: </span>
-                  You upload your game footage (Google Drive or WeTransfer). We process it with AI to find your best moments, then hand-polish the final reel before delivery.
-                </p>
+              <div style={{marginTop:32,overflowX:"auto"}}>
+                <table style={{width:"100%",borderCollapse:"collapse",fontSize:".88rem"}}>
+                  <thead>
+                    <tr>
+                      <th style={{textAlign:"left",padding:"14px 20px",color:GRAY,fontWeight:600,fontSize:".75rem",textTransform:"uppercase",letterSpacing:"2px",borderBottom:`1px solid rgba(255,255,255,.08)`}}>Feature</th>
+                      {REEL_PACKAGES.map(pkg=>(
+                        <th key={pkg.name} style={{padding:"14px 20px",textAlign:"center",borderBottom:`1px solid rgba(255,255,255,.08)`,borderLeft:`1px solid rgba(255,255,255,.08)`,background:pkg.featured?"rgba(201,168,76,.08)":"transparent"}}>
+                          <div style={{color:GOLD,fontSize:".68rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"2px",marginBottom:6}}>{pkg.tier}</div>
+                          <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"1.6rem",color:WHITE,letterSpacing:".5px"}}>{pkg.name}</div>
+                          <div style={{display:"flex",alignItems:"flex-end",justifyContent:"center",gap:3,margin:"10px 0 4px"}}>
+                            <span style={{color:GOLD,fontWeight:600,fontSize:".85rem",marginBottom:6}}>$</span>
+                            <span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"2.6rem",color:GOLD,lineHeight:1}}>{pkg.price}</span>
+                            <span style={{color:GRAY,fontSize:".75rem",marginBottom:8}}>/ reel</span>
+                          </div>
+                          <p style={{color:GRAY,fontSize:".78rem",lineHeight:1.5,fontWeight:300,marginBottom:14,maxWidth:180,margin:"0 auto 14px"}}>{pkg.desc}</p>
+                          {pkg.featured
+                            ? <button className="btn-price-primary" onClick={() => setTab("book")}>Book This</button>
+                            : <button className="btn-price-ghost" onClick={() => setTab("book")}>Get Started</button>}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {REEL_FEATURES.map((row,i)=>(
+                      <tr key={row.label} style={{background:i%2===0?"rgba(255,255,255,.02)":"transparent"}}>
+                        <td style={{padding:"13px 20px",color:GRAY,fontSize:".84rem",borderBottom:`1px solid rgba(255,255,255,.05)`}}>{row.label}</td>
+                        {[row.starter,row.pro,row.elite].map((val,j)=>(
+                          <td key={j} style={{padding:"13px 20px",textAlign:"center",borderBottom:`1px solid rgba(255,255,255,.05)`,borderLeft:`1px solid rgba(255,255,255,.05)`,background:j===1?"rgba(201,168,76,.04)":"transparent",color:val==="✅"?GOLD:val==="❌"?"rgba(255,255,255,.2)":WHITE,fontSize:val==="✅"||val==="❌"?"1.1rem":".84rem",fontWeight:val==="✅"||val==="❌"?"normal":500}}>{val}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
-            <div className="pricing-grid">
-              {packages.map(pkg=>(
-                <div key={pkg.name} className={"price-card"+(pkg.featured?" featured":"")}>
-                  <div className="price-tier">{pkg.tier}</div>
-                  <div className="price-name display">{pkg.name}</div>
-                  <div className="price-amount"><span className="price-dollar">$</span><span className="price-num">{pkg.price}</span><span className="price-per">/ {pkg.per}</span></div>
-                  <p className="price-desc">{pkg.desc}</p>
-                  <ul className="price-list">{pkg.features.map(f=><li key={f}><span style={{color:GOLD}}>✦</span>{f}</li>)}</ul>
-                  {pkg.featured
-                    ? <button className="btn-price-primary" onClick={() => setTab("book")}>Book This Package</button>
-                    : <button className="btn-price-ghost" onClick={() => setTab("book")}>Get Started</button>}
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       )}
-
       {/* ── BOOK ── */}
       {tab==="book" && (
         <div style={{paddingTop:80}}>
@@ -434,14 +458,14 @@ export default function App() {
                   <select className="form-select" value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
                     <option value="">Select a service...</option>
                     <optgroup label="📸 Photography">
-                      <option>Photography — Rising Star ($149)</option>
-                      <option>Photography — Pro Player ($299)</option>
-                      <option>Photography — Next Level ($549)</option>
+                      <option>Photography — Single Player ($50)</option>
+                      <option>Photography — Small Group ($100)</option>
+                      <option>Photography — Full Team ($175)</option>
                     </optgroup>
                     <optgroup label="🎬 AI Highlight Reels">
-                      <option>Highlight Reel — First Touch ($149)</option>
-                      <option>Highlight Reel — Game Changer ($299)</option>
-                      <option>Highlight Reel — Signing Day ($549)</option>
+                      <option>Highlight Reel — First Touch ($30)</option>
+                      <option>Highlight Reel — Game Changer ($75)</option>
+                      <option>Highlight Reel — Signing Day ($125)</option>
                     </optgroup>
                     <option>📸🎬 Bundle — Photo + Reel Combo</option>
                   </select>
