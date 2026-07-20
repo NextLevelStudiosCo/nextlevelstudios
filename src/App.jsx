@@ -584,7 +584,7 @@ export default function App() {
         <div className="footer-sub">Elevating Soccer Players. One Shot at a Time.</div>
         <div className="social-row">
           <span className="social-label">Follow Us</span>
-          <a href="https://instagram.com/YOURHANDLE" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
+          <a href="https://instagram.com/nls.soccer" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
               <circle cx="12" cy="12" r="4"/>
