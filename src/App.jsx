@@ -576,6 +576,9 @@ export default function App() {
         </div>
         <div className="footer-sub">Elevating Soccer Players. One Shot at a Time.</div>
         <div className="footer-links">
+        <a href="https://instagram.com/nls.soccer" target="_blank" rel="noopener noreferrer" className="footer-link">
+  Instagram
+</a>
           {["Home","Services","Pricing","Book Now"].map(l=>(
             <button key={l} className="footer-link" onClick={() => setTab(l.toLowerCase().replace(" ","").replace("now",""))}>{l}</button>
           ))}
