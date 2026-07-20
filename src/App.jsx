@@ -151,6 +151,11 @@ const styles = `
   .footage-box-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:${GOLD};margin-bottom:6px;}
   .footage-box-desc{font-size:.8rem;color:${GRAY};line-height:1.6;font-weight:300;margin-bottom:12px;}
 
+
+  .social-row{display:flex;justify-content:center;margin-bottom:24px;}
+  .social-icon{width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;color:${GOLD};transition:all .25s;background:rgba(201,168,76,.06);}
+  .social-icon:hover{background:${GOLD};color:${NAVY_DARK};transform:translateY(-3px);box-shadow:0 10px 26px rgba(201,168,76,.35);border-color:${GOLD};}
+
   .tab-switch{display:flex;gap:8px;margin-top:36px;}
   .tab-switch-btn{background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px 24px;font-family:'Outfit',sans-serif;font-weight:600;font-size:.83rem;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px;}
   .tab-switch-btn.active{background:${GOLD};color:${NAVY_DARK};border-color:${GOLD};}
@@ -575,10 +580,17 @@ export default function App() {
           <span className="footer-logo-text display"><span className="gold-text">NEXT LEVEL</span> STUDIOS</span>
         </div>
         <div className="footer-sub">Elevating Soccer Players. One Shot at a Time.</div>
+        <div className="social-row">
+          <a href="https://instagram.com/nls.soccer" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
         <div className="footer-links">
-        <a href="https://instagram.com/nls.soccer" target="_blank" rel="noopener noreferrer" className="footer-link">
-  Instagram
-</a>
+
           {["Home","Services","Pricing","Book Now"].map(l=>(
             <button key={l} className="footer-link" onClick={() => setTab(l.toLowerCase().replace(" ","").replace("now",""))}>{l}</button>
           ))}
