@@ -214,7 +214,7 @@ const REEL_FEATURES = [
   {label:"NLS intro & outro",  starter:"✅",          pro:"✅",           elite:"✅"},
   {label:"Motion graphics",    starter:"❌",          pro:"✅",           elite:"✅"},
   {label:"Scouting Page",   starter:"❌",          pro:"✅",           elite:"✅"},
-  {label:"Ai Coach Feedback",  starter:"❌",          pro:"❌",           elite:"✅"},
+  {label:"AI Coach Feedback",  starter:"❌",          pro:"❌",           elite:"✅"},
   {label:"Unlimited revisions",starter:"❌",          pro:"❌",           elite:"✅"},
   {label:"Priority delivery",  starter:"❌",          pro:"❌",           elite:"✅"},
 ];
