@@ -302,7 +302,7 @@ export default function App() {
             <button className="btn-ghost" onClick={() => setTab("services")}>Our Services</button>
           </div>
           <div className="hero-stats fade-up-4">
-            <div className="stat"><div className="stat-num">Seattle WA</div><div className="stat-lbl">Based</div></div>
+            <div className="stat"><div className="stat-num">Seattle - WA</div><div className="stat-lbl">Based</div></div>
             <div className="stat-divider" />
             <div className="stat"><div className="stat-num">48HR</div><div className="stat-lbl">Reel Delivery</div></div>
             <div className="stat-divider" />
