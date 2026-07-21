@@ -490,7 +490,7 @@ export default function App() {
           <div className="section" style={{textAlign:"center",paddingBottom:0}}>
             <span className="section-tag">Booking</span>
             <h2 className="section-title">Let's Get You <span className="gold-text">Booked</span></h2>
-            <p className="section-sub" style={{margin:"0 auto"}}>Fill out the details below. We'll account for your details and confirm within 24 hours.</p>
+            <p className="section-sub" style={{margin:"0 auto"}}>Fill out the details below. We'll review your details and confirm within 24 hours.</p>
           </div>
           <div style={{maxWidth:1160,margin:"0 auto",padding:"0 40px 100px"}}>
             {booked ? (
