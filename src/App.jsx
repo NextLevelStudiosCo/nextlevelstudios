@@ -370,9 +370,9 @@ export default function App() {
                 <div className="service-card-body">
                   <span className="service-badge">Photography</span>
                   <div className="service-title display">Elite Player Photography</div>
-                  <p className="service-desc">Professional photo sessions designed around soccer players — action shots, portraits, and personal brand content that looks elite.</p>
+                  <p className="service-desc">We show up to your game and capture it all — the big plays, the intensity, the moments that matter. Professionally shot and edited, ready to keep, share, or post.</p>
                   <ul className="service-features">
-                    {["Action & lifestyle shots","Edited & retouched delivery","Multiple packages available","On-location or studio shoots","Social-ready formats included"].map(f=><li key={f}><span className="check">✦</span>{f}</li>)}
+                    {["Real in-game action shots","Edited & retouched delivery","Single, small group, & full-team packages","Digital Gallery delivered within 48 hours","Social-ready formats included"].map(f=><li key={f}><span className="check">✦</span>{f}</li>)}
                   </ul>
                   <button className="service-link" onClick={() => { setTab("pricing"); setPricingTab("photo"); }}>See Packages <span>→</span></button>
                 </div>
